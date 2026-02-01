@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://qmi1b0tre2ax"]
+
+[ext_resource type="Script" uid="uid://dlfsjmpyidce2" path="res://Scripts/WorldGen/world.gd" id="1_5nsto"]
+[ext_resource type="PackedScene" uid="uid://b2w4e43tspflb" path="res://Scenes/Mask.tscn" id="2_gjpho"]
+[ext_resource type="Texture2D" uid="uid://l5tx15ca2gih" path="res://Assets/Tileset.png" id="4_gjpho"]
+[ext_resource type="PackedScene" uid="uid://bmmaxwm2ni1ki" path="res://Scenes/Player.tscn" id="5_45d1s"]
+[ext_resource type="Script" uid="uid://bqw6urpf7bhop" path="res://Scripts/WorldGen/world_generator.gd" id="5_p70al"]
+[ext_resource type="PackedScene" uid="uid://b8xly30l0jcpr" path="res://Scenes/wolf.tscn" id="6_45d1s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p70al"]
+texture = ExtResource("4_gjpho")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_45d1s"]
+sources/0 = SubResource("TileSetAtlasSource_p70al")
+
+[node name="World" type="Node2D" unique_id=978415298 node_paths=PackedStringArray("player_ref")]
+script = ExtResource("1_5nsto")
+player_ref = NodePath("Player")
+
+[node name="WorldGenerator" type="Node2D" parent="." unique_id=1238766158 node_paths=PackedStringArray("tilemap_ref")]
+script = ExtResource("5_p70al")
+tilemap_ref = NodePath("TileMapLayer")
+tree_count = 200
+tree_min_distance = 50
+tree_max_distance = 100
+
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldGenerator" unique_id=1415485026]
+tile_set = SubResource("TileSet_45d1s")
+
+[node name="Mask" parent="." unique_id=2113752428 instance=ExtResource("2_gjpho")]
+position = Vector2(428, 201)
+
+[node name="Player" parent="." unique_id=1235215816 instance=ExtResource("5_45d1s")]
+position = Vector2(268, 208)
+
+[node name="Wolf" parent="." unique_id=1026034451 instance=ExtResource("6_45d1s")]
+position = Vector2(731, 63)
+
+[connection signal="collect" from="Mask" to="." method="_on_mask_collect"]

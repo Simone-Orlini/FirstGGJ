@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dacfe8pgpsw67"]
+
+[ext_resource type="Script" uid="uid://dlrvtn1knbvhn" path="res://Scripts/WorldGen/tree.gd" id="1_0suky"]
+[ext_resource type="Shader" uid="uid://brgfe744xflt1" path="res://Shaders/Player.gdshader" id="2_0suky"]
+[ext_resource type="Texture2D" uid="uid://ccbkuooryxd5p" path="res://Assets/Tree.png" id="2_itkj8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e63j"]
+shader = ExtResource("2_0suky")
+shader_parameter/look_right = true
+shader_parameter/skew_dir = 1.0
+shader_parameter/profile = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cb0yx"]
+load_path = "res://.godot/imported/Tree.png-0dac7debc624d47f88ee9d66755e5bae.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itkj8"]
+radius = 14.0
+height = 70.0
+
+[node name="Tree" type="StaticBody2D" unique_id=1356901792]
+script = ExtResource("1_0suky")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1796239705]
+material = SubResource("ShaderMaterial_0e63j")
+position = Vector2(0, -192)
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_cb0yx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1392548849]
+position = Vector2(0, -192)
+scale = Vector2(3, 3)
+texture = ExtResource("2_itkj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=925975198]
+position = Vector2(0, -14)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_itkj8")

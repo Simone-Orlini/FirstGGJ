@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b2w4e43tspflb"]
+
+[ext_resource type="Script" uid="uid://dcj7ws6qnpsmq" path="res://Scripts/mask.gd" id="1_nr6xi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb7cf"]
+
+[node name="Mask" type="Node2D" unique_id=2113752428]
+script = ExtResource("1_nr6xi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1078214255]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1805930972]
+shape = SubResource("CircleShape2D_hb7cf")
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D" unique_id=377919319]
+polygon = PackedVector2Array(-7, -7, -3, 0, -7, 7, 7, 7, 3, 0, 7, -7)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

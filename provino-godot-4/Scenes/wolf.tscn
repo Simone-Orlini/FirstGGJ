@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b8xly30l0jcpr"]
+
+[ext_resource type="Script" uid="uid://buh5pftf51eh7" path="res://Scripts/Enemies/wolf.gd" id="1_cmbfo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uu3k6"]
+radius = 250.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uu3k6"]
+load_path = "res://.godot/imported/wolf.png-456219d9297d11da5d0d1cc0d19b6665.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_al8g3"]
+radius = 20.0
+height = 100.0
+
+[node name="Wolf" type="CharacterBody2D" unique_id=1026034451 node_paths=PackedStringArray("sprite_ref", "rays_container")]
+script = ExtResource("1_cmbfo")
+max_speed = 300
+sprite_ref = NodePath("Sprite2D")
+rays_container = NodePath("Rays")
+
+[node name="Vision" type="Area2D" parent="." unique_id=319027477]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" unique_id=1282520589]
+shape = SubResource("CircleShape2D_uu3k6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1969886898]
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(0.12708333, 0.11798802)
+texture = SubResource("CompressedTexture2D_uu3k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809453055]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_al8g3")
+
+[node name="Rays" type="Node2D" parent="." unique_id=1730786010]
+
+[node name="Ray1" type="RayCast2D" parent="Rays" unique_id=2132066767]
+target_position = Vector2(0, 70)
+
+[node name="Ray2" type="RayCast2D" parent="Rays" unique_id=556264462]
+target_position = Vector2(45, 70)
+
+[node name="Ray3" type="RayCast2D" parent="Rays" unique_id=1344731469]
+target_position = Vector2(-45, 70)
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

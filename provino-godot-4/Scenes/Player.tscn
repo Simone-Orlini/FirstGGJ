@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bmmaxwm2ni1ki"]
+
+[ext_resource type="Script" uid="uid://bv27l1bxmfn6l" path="res://Scripts/Player/player.gd" id="1_rpqav"]
+[ext_resource type="Shader" uid="uid://brgfe744xflt1" path="res://Shaders/Player.gdshader" id="2_dewec"]
+[ext_resource type="Texture2D" uid="uid://bgotplun4w16i" path="res://Assets/Fox2.png" id="2_kyqiw"]
+[ext_resource type="Script" uid="uid://d140or7aaq8hw" path="res://Scripts/Player/player_camera.gd" id="3_gntrk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dewec"]
+shader = ExtResource("2_dewec")
+shader_parameter/look_right = true
+shader_parameter/skew_dir = 1.0
+shader_parameter/profile = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dewec"]
+radius = 8.0
+height = 40.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1235215816 node_paths=PackedStringArray("sprite_ref")]
+script = ExtResource("1_rpqav")
+sprite_ref = NodePath("Sprite2D")
+metadata/_edit_group_ = true
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=195723365]
+material = SubResource("ShaderMaterial_dewec")
+texture = ExtResource("2_kyqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=981830073]
+texture = ExtResource("2_kyqiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1570902385]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dewec")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1055409077 node_paths=PackedStringArray("player")]
+top_level = true
+zoom = Vector2(2, 2)
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("3_gntrk")
+player = NodePath("..")
+smoothing = true
+smoothing_distance = 10
