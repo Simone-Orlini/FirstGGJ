@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EntityStats" format=3 uid="uid://scea1cmmmgo8"]
+
+[ext_resource type="Script" uid="uid://cu0y6tkplwwmm" path="res://Resources/EntityStats.gd" id="1_oce33"]
+
+[resource]
+script = ExtResource("1_oce33")
+max_speed = 200
+accel_speed = 2500
+metadata/_custom_type_script = "uid://cu0y6tkplwwmm"

@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://l5tx15ca2gih" path="res://Assets/Tileset.png" id="4_gjpho"]
 [ext_resource type="PackedScene" uid="uid://bmmaxwm2ni1ki" path="res://Scenes/Player.tscn" id="5_45d1s"]
 [ext_resource type="Script" uid="uid://bqw6urpf7bhop" path="res://Scripts/WorldGen/world_generator.gd" id="5_p70al"]
-[ext_resource type="PackedScene" uid="uid://b8xly30l0jcpr" path="res://Scenes/wolf.tscn" id="6_45d1s"]
+[ext_resource type="PackedScene" uid="uid://b8xly30l0jcpr" path="res://Scenes/Wolf.tscn" id="6_45d1s"]
+[ext_resource type="PackedScene" uid="uid://dacfe8pgpsw67" path="res://Scenes/Tree.tscn" id="7_y7y61"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p70al"]
 texture = ExtResource("4_gjpho")
@@ -37,5 +38,8 @@ position = Vector2(268, 208)
 
 [node name="Wolf" parent="." unique_id=1026034451 instance=ExtResource("6_45d1s")]
 position = Vector2(731, 63)
+
+[node name="Tree" parent="." unique_id=1356901792 instance=ExtResource("7_y7y61")]
+position = Vector2(1187, 401)
 
 [connection signal="collect" from="Mask" to="." method="_on_mask_collect"]

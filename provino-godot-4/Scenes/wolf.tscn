@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8xly30l0jcpr"]
 
-[ext_resource type="Script" uid="uid://buh5pftf51eh7" path="res://Scripts/Enemies/wolf.gd" id="1_cmbfo"]
+[ext_resource type="Script" uid="uid://btkvwhxqdmv5x" path="res://Scripts/Enemies/enemy.gd" id="1_fjwnx"]
+[ext_resource type="Resource" uid="uid://scea1cmmmgo8" path="res://Resources/WolfStats.tres" id="2_nvnx2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uu3k6"]
 radius = 250.0
@@ -12,11 +13,11 @@ load_path = "res://.godot/imported/wolf.png-456219d9297d11da5d0d1cc0d19b6665.cte
 radius = 20.0
 height = 100.0
 
-[node name="Wolf" type="CharacterBody2D" unique_id=1026034451 node_paths=PackedStringArray("sprite_ref", "rays_container")]
-script = ExtResource("1_cmbfo")
-max_speed = 300
+[node name="Wolf" type="CharacterBody2D" unique_id=1026034451 node_paths=PackedStringArray("vision_sensors_container", "sprite_ref")]
+script = ExtResource("1_fjwnx")
+vision_sensors_container = NodePath("Rays")
+stats = ExtResource("2_nvnx2")
 sprite_ref = NodePath("Sprite2D")
-rays_container = NodePath("Rays")
 
 [node name="Vision" type="Area2D" parent="." unique_id=319027477]
 
